@@ -5,7 +5,7 @@ import { fetchPost } from "../features/getPost";
 const Post = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.getPost);
-  console.log("test");
+  // console.log("test");
   useEffect(() => {
     dispatch(fetchPost());
   }, [dispatch]);

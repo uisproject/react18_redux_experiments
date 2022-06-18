@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addName } from "../features/actions/listActions";
+import { fetchComments } from "../features/reducers/userReducers";
 
 const User = () => {
   const [name, setName] = useState("");
-  const { users } = useSelector((state) => state.user);
+  const { users, comments } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, [dispatch]);
 
   const inputHandler = (e) => {
     e.preventDefault();
@@ -34,6 +39,9 @@ const User = () => {
           }}
         />
       </form>
+      {comments.slice(0, 10).map((comment, idx) => (
+        <div key={idx}>{comment.email}</div>
+      ))}
     </div>
   );
 };
