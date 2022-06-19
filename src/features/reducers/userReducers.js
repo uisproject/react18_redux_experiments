@@ -18,7 +18,7 @@ const deleteUserFunc = (state, { payload }) => {
 export const fetchComments = createAsyncThunk(
   getComments,
   async (payload, thunkAPI) => {
-    console.log(thunkAPI);
+    // console.log(thunkAPI);
     const { data } = await axios.get(
       "https://jsonplaceholder.typicode.com/comments"
     );
@@ -28,7 +28,7 @@ export const fetchComments = createAsyncThunk(
 );
 
 const setComments = (state, { payload }) => {
-  console.log("called");
+  // console.log("called");
   state.comments = payload;
 };
 

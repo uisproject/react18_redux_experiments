@@ -12,3 +12,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </React.StrictMode>
 );
+
+// the position of the provide must like this, otherwise it's error
