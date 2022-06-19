@@ -4,12 +4,12 @@ import { BASE_URL } from "../../utils/api";
 export const userApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["User"],
+  tagTypes: ["User"], // important
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: () => "/users",
-      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
-      providesTags: ["User"],
+      transformResponse: (res) => res.sort((a, b) => b.id - a.id), // you can use this to sort the response or play with the response
+      providesTags: ["User"], // this is hella important because this will make the change, since RTK is basically cache the response so when you update the fetch the component will re-render
     }),
     addUsers: builder.mutation({
       query: (user) => ({
@@ -17,7 +17,7 @@ export const userApi = createApi({
         method: "POST",
         body: user,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User"], // important
     }),
   }),
 });
